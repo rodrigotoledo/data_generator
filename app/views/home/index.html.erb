@@ -1,0 +1,16 @@
+<h1>Generator</h1>
+<h2>Password for me</h2>
+<%=link_to 'Generate password just for me', generate_password_for_current_user_path, data: { turbo_stream: true } %><br /><br />
+<%=turbo_frame_tag :password_for_me do %>
+Password just for me
+<% end %>
+<hr />
+<%=link_to 'Generate data for every session', generate_data_for_every_session_path, data: {"turbo-prefetch": false, turbo: false} %><br /><br />
+<%=turbo_stream_from :data_generator_service %>
+<%=turbo_frame_tag :uuid do %>
+New UUID here
+<% end %>
+<hr />
+<%=turbo_frame_tag :name do %>
+New NAME here
+<% end %>
